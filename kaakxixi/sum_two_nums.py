@@ -10,6 +10,7 @@
 因为 nums[0] + nums[1] = 2 + 7 = 9
 所以返回 [0, 1]
 """
+"""方法1是使用list查询差值"""
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -23,6 +24,7 @@ class Solution(object):
                 return [i,nums.index(num)]
 
 
+"""方法2是使用dict查询差值"""
     def twoSum2(self, nums, target):
         """
         :type nums: List[int]
@@ -30,13 +32,13 @@ class Solution(object):
         :rtype: List[int]
         """           
         #创建一个空字典
-        d = {}
+        dic = {}
         for i in range(len(nums)):
             num = target - nums[i]
             #字典d中存在nums[i]时
-            if nums[i] in d:
-                return d[nums[i]],i
+            if nums[i] in dic:
+                return dic[nums[i]],i
             #否则往字典增加键/值对
             else:
-                d[num] = i
+                dic[num] = i
         #边往字典增加键/值对，边与nums[i]进行对比

@@ -1,3 +1,7 @@
+LeetCode 1 两数之和 
+2018-12-05
+代码提交地址 https://leetcode-cn.com/problems/two-sum/submissions/
+
 算法分析：
 
 方法1. 整体时间复杂度为O(n^2). 由于python中的list对象实际上是链表，其查询效率为 O(n), 即这里的if 语句if num in nums复杂度为O(n),
