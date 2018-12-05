@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    //随机的整数在[1,1000];
+    bool num[1001];
+    int n;//随机数的个数
+    while (cin >> n)
+    {
+        int c_i = 0;
+        while (c_i < 1001)
+            num[c_i ++] = false;
+        c_i = 0;
+        int tmp = 0;
+        while (c_i < n)
+        {
+            cin >> tmp;
+            num[tmp] = true;
+            c_i ++;
+        }
+        c_i = 0;
+        while (c_i < 1001)
+        {
+            if (num[c_i])
+                cout << c_i << endl;
+            c_i ++;
+        }
+            
+    }
+    return 0;
+}
