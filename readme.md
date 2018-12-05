@@ -21,7 +21,7 @@
 | LeafScar   | [直通点](https://github.com/guangcity/learning-algorithm/tree/master/LeafScar) |
 | Laqw       | [直通点](https://github.com/guangcity/learning-algorithm/tree/master/Laqw) |
 | 卖萌粉松鼠 | [直通点](https://github.com/guangcity/learning-algorithm/tree/master/卖萌粉松鼠) |
-|            |                                                              |
+| yuhuacao   | [直通点](https://github.com/guangcity/learning-algorithm/tree/master/yuhuacao) |
 |            |                                                              |
 |            |                                                              |
 |            |                                                              |
