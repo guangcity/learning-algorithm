@@ -19,8 +19,8 @@
 | Aquila     | [直通点](https://github.com/Light-City/learning-algorithm/tree/master/Aquila) |
 | Spareribs  | [直通点](https://github.com/Light-City/learning-algorithm/tree/master/Spareribs) |
 | LeafScar   | [直通点](https://github.com/Light-City/learning-algorithm/tree/master/LeafScar) |
-|            |                                                              |
-|            |                                                              |
+| Laqw       | [直通点](https://github.com/Light-City/learning-algorithm/tree/master/Laqw) |
+| 卖萌粉松鼠 | [直通点](https://github.com/Light-City/learning-algorithm/tree/master/卖萌粉松鼠) |
 |            |                                                              |
 |            |                                                              |
 |            |                                                              |

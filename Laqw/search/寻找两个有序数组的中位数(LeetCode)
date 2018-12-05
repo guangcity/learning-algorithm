@@ -1,0 +1,74 @@
+'''
+想法如下：
+
+当数的个数为奇数时，中位数就这一堆已经排好序的数最中间那一个
+
+当数的个数为偶数时，中位数就是中间那两个数的平均数
+'''
+
+class Solution:
+    def findMedianSortedArrays(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: float
+        """
+        lis = []#将nums1和nums2重新进行排序放进lis中
+        j = 0
+        k = 0
+        n = len(nums1)
+        m = len(nums2)
+        if(n == 0):#nums1为空时，直接在num2中返回
+            if(m%2==0):
+                i = int(m/2)
+                return (nums2[i]+nums2[i-1])/2
+            else:
+                return nums2[int(m/2)]
+        elif(m == 0):#同上理
+            if(n%2==0):
+                i = int(n/2)
+                return (nums1[i]+nums1[i-1])/2
+            else:
+                return nums1[int(n/2)]
+        for i in range(0,n+m):#因为nums1和num2已经分别排序好了，所以n+m的复杂度已经够用
+            if(j < n and k < m):#保证下标没有越界
+                if(nums1[j]<=nums2[k]):
+                    lis.append(nums1[j])
+                    j = j + 1
+                else:
+                    lis.append(nums2[k])
+                    k = k + 1
+            elif(j==n):#nums1已经全部放进了lis，现在只需要放nums2就行了
+                lis.append(nums2[k])
+                k = k + 1
+            elif(k==m):#同上理
+                lis.append(nums1[j])
+                j = j + 1
+
+        if((n+m)%2==0):
+            i = int((n+m)/2)
+            return (lis[i]+lis[i-1])/2
+        else:
+            return lis[int(len(lis)/2)]
+
+'''
+
+第一次用LeetCode，不太习惯。然后因为数据类型的问题，困扰了一会。
+
+Python写程序的毛病多，在IDLE上写好了，放在LeetCode里面就会缩进不对。。
+
+然后对比了一下我的答案和官方的答案。
+
+官方给出的时间复杂度是O(log(min(m,n)))，而我的是O(m+n)
+
+官方给出的时间复杂度是O(1),而我的还是O(m+n)
+
+可以在两个数组里各设置一个从零开始的下标，然后也是通过对比决定下标的移动
+
+当m+n是奇数时，就运行到i<(m+n)/2
+
+当m+n是偶数时，就运行到i<(m+n)/2+1
+
+这样时间会变短，空间复杂度也下降到O(1)
+
+'''
