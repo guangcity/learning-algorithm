@@ -35,7 +35,7 @@ class Solution(object):
         dic = {}
         for i in range(len(nums)):
             num = target - nums[i]
-            #字典d中存在nums[i]时
+            #字典d中存在nums[i]时,hash查找复杂度为1
             if nums[i] in dic:
                 return dic[nums[i]],i
             #否则往字典增加键/值对
