@@ -27,7 +27,7 @@
 | 底层搬砖工     | [直通点](https://github.com/guangcity/learning-algorithm/tree/master/%E5%BA%95%E5%B1%82%E6%90%AC%E7%A0%96%E5%B7%A5) |
 | miss-ann       | [直通点](https://github.com/guangcity/learning-algorithm/tree/master/miss-ann) |
 | woyaoyangguang | [直通点](https://github.com/guangcity/learning-algorithm/tree/master/woyaoyangguang) |
-|                |                                                              |
+| 马静敏         | [直通点](https://github.com/guangcity/learning-algorithm/tree/master/马晶敏) |
 |                |                                                              |
 |                |                                                              |
 |                |                                                              |
