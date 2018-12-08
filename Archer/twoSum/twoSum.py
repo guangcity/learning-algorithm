@@ -27,9 +27,7 @@ def twoSum(nums, target):
             if temp == nums[j]:
                 return [i, j]
     '''
-
     # 解法3，用哈希表，空间换时间，第一次循环将数组的值放入哈希表中，第二次循环从哈希表中取出值(待完善)
-
     map_a = dict()
 
     k = len(nums)
@@ -41,18 +39,24 @@ def twoSum(nums, target):
     for i in range(0, k):
         temp = target - nums[i]
         if temp in map_a and map_a[temp][0]!=i:
-            return [map_a[temp][0], i]
+            return [i, map_a[temp][0]]
     print "No two sum solution"
 
-    # 解法4，用哈希表，一边把数组元素放到哈希表中，一边判断哈希表中是否有满足和的两个整数（待完善）
+
     '''
+    # 解法4，用哈希表，一边把数组元素放到哈希表中，一边判断哈希表中是否有满足和的两个整数（待完善）
     map_a = dict()
     k = len(nums)
-
     for i in range(0, k):
-        map_a[nums[i]] = (i, nums[i])
-        print map_a.items()
         temp = target - nums[i]
-        if temp in map_a and map_a[temp][0]!=i:
-            return [map_a[temp][0], i]
+        if temp in map_a :
+            print map_a.items()
+            return [map_a[temp], i]
+        map_a[nums[i]] =  i
     '''
+
+a = [3, 3, 4, 5]
+
+b = twoSum(a,8)
+
+print b
