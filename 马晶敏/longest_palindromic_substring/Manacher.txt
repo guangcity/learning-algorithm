@@ -1,0 +1,85 @@
+public class Solution {
+    public string LongestPalindrome(string s) {
+        int n = s.Length;
+            if (s == null || n < 1)
+                return "";
+            char[] sArr = s.ToArray();
+            string s1 = "#" + string.Join("#", sArr) + "#";
+            int m = s1.Length;
+            int maxR = 0;
+            int cenI = 0;
+            //int maxL = 0;
+            int cenIL = 0;
+            //int maxLength = 0;
+            List<int> len = new List<int>();
+            //计算Len[]数组
+            for (int i = 0; i < m; i++)
+            {
+                int r = 0;
+                if (i >= maxR)
+                {
+                    int j = 0;
+                    while (i - j >= 0 && i + j < m)
+                    {
+                        if (s1[i - j] == s1[i + j])
+                        {
+                            if (i + j >= maxR)
+                            {
+                                r = i + j;
+                            }
+                            j++;
+                        }
+                        else
+                            break;
+                    }
+                    if (r > maxR)
+                    {
+                        cenI = i;
+                        maxR = r;
+                    }
+                    len.Add(r - i + 1);
+                    if (r - i + 1 >= len.Max())
+                        cenIL = i;
+                }
+                else
+                {
+                    int iL = 2 * cenI - i;
+                    if (i <= maxR)
+                    {
+                        if (len[iL] < maxR - i)
+                             len.Add(len[iL]);
+                        else
+                        {
+                            int j = 0;
+                            while (i - j >= 0 && i + j < m)
+                            {
+                                if (s1[i - j] == s1[i + j])
+                                {
+                                    if (i + j >= maxR)
+                                    {
+                                        r = i + j;
+                                    }
+                                    j++;
+                                }
+                                else
+                                    break;
+                            }
+                            if (r > maxR)
+                            {
+                                cenI = i;
+                                maxR = r;
+                            }
+                            len.Add(r - i + 1);
+                            if (r - i + 1 >= len.Max())
+                                cenIL = i;
+                        }
+                    }
+                }
+            }
+            char[] sp= { '#' };
+            string subS1 = s1.Substring(cenIL-len[cenIL]+1,2*(len[cenIL]-1)+1);
+            string[] subS = subS1.Split(sp, StringSplitOptions.None);
+            string subSs=string.Join("", subS);
+            return subSs;
+    }
+}
