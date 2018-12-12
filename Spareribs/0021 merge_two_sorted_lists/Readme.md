@@ -1,102 +1,91 @@
 **目录**
-- <a href="#tm">`题目: 最大子序和`</a>
+- <a href="#tm">`题目: 合并两个有序链表`</a>
 - <a href="#ckda">`参考答案`</a>
     - <a href="#fa1">`方案1 遍历法`</a>
-    - <a href="#fa2">`方案2 动态规划`</a>
 - <a href="#grzj">`问题`</a>
 
 	
 <a id="tm"/>
 
-# 题目: 最大子序和
-
-给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
-
-示例:
+# 题目：合并两个有序链表 Merge Two Sorted Lists    
+将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
 ```
-输入: [-2,1,-3,4,-1,2,1,-5,4],
-输出: 6
-解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
+示例：
+输入：1->2->4, 1->3->4
+输出：1->1->2->3->4->4
 ```
-进阶:
-如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的分治法求解。
 
-<a id="ckda"/>
+<a href="#ckda">
 
 # 参考答案
-首先，注意审题
-1. 最大和的 **连续** 子数组
-2. 子数组 **至少** 包含一个元素
 
-<a id="fa1"/>
+a href="#fa1">
 
 ## 方案1 遍历法
 ### 【思路】
-遍历 nums 数据，求和标记最大值。当和小于0的时候，重置和为0。
+定义一个结果链表，判断两个链表中的数据大小，将结果存入结果链表中
 ### 【实现】
 ```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
 class Solution:
-    def maxSubArray(self, nums):
+    def mergeTwoLists(self, l1, l2):
         """
-        :type nums: List[int]
-        :rtype: int
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
         """
-        # 异常校验, 如果为空 列表 直接返回
-        if nums == []:
-            return 
+        result = ListNode(0)
+        head = result # 神操作
         
-        # 初始化变量 
-        # _sum: 统计当前连续子数据之和, 默认值为【0】
-        # _max: 标记子数据的最大值, 默认值为【列表第1个值】
-        _sum = 0
-        _max = nums[0]
+        # 确认 l1 和 l2 为空的场景, 直接返回
+        if l1 == None and l2 == None:
+            return None
+        elif l1 == None:
+            return l2
+        elif l2 == None:
+            return l1
         
-        for num in nums: # 迭代获取 nums 的数据
-            _sum += num
-            _max = max(_max, _sum)
-            
-            # 直到出现 _sum 小于 0的时候，重置 _sum 的值为0
-            if _sum < 0:
-                _sum = 0
-        return _max
+        while True:
+            # 比较 l1 和 l2 数据的大小
+            if l1.val < l2.val:
+                head.val = l1.val
+                l1 = l1.next
+                if l1 == None:
+                    head.next = l2
+                    break
+                head.next = ListNode(0)
+                head = head.next
+            else:
+                head.val = l2.val
+                l2 = l2.next
+                if l2 == None:
+                    head.next = l1
+                    break
+                head.next = ListNode(0)
+                head = head.next
+        return result
 ```
 ### 【分析】
-假设 nums 长度为n
-时间复杂度：O(n)
-空间复杂度：O(n)
+时间复杂度：假设一个是$n$个元素，对链表进行遍历($n$)，最终链接所有元素($n+n$)
 
-<a id="fa2"/>
+空间复杂度：因为需要一个数组，所以需要额外的空间。这个空间的大小就是链表元素的个数 $O(n)$
 
-## 方案2 动态规划
-### 【思路】
-假设sum[i]是第i个元素结尾的最大连续子数组和，那么sum[i-1]是第i-1个元素结尾的最大连续子数组和，对于整个计算结果而言，要么就是sum[i-1]是最优的结果，要么sum[i]是最优结果。实际上这个操作相当于方案1中的“当和小于0的时候，重置和为0”。
-这里不再开辟新的空间，直接使用 nums 列表的空间，存储sum[i]
-### 【实现】
-```python
-class Solution:
-    def maxSubArray(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        # 异常校验, 如果为空 列表 直接返回
-        if nums == []:
-            return 
-        
-        for i in range(1, len(nums)):  
-            # 当前值的大小与前面的值之和比较，若当前值更大，则取当前值，舍弃前面的值之和  
-            _max = max(nums[i] + nums[i-1], nums[i])  
-            nums[i]= _max # 将当前和最大的赋给nums[i]，新的nums存储的为和值  
-        return max(nums)
+# 遇到的问题
+1. ListNode这种资源的操作的方法
 ```
-### 【分析】
-假设 nums 长度为n
-时间复杂度：O(n)
-空间复杂度：O(n)
+# 获取 head.val 中的数据，此时的值为 0
+head = ListNode(0)
+head.val
+# 让 head的 next 也成为 ListNode 对象，值也为0
+head.next = ListNode(0)
+head = head.next  
+```
+3. head = result 这样的神操作，在不改变原有数据的情况下，操作 result 中的 next 的数据
 
-<a id="wt"/>
-
-# 问题
-1. 时间复杂度和空间复杂度的计算方法需要总结。
-
-博客地址：[LeetCode刷题日记](https://blog.csdn.net/q370835062/column/info/30688) 欢迎关注，留言~~~
+-----------------------------
+欢迎提问，每天晚上都会定期回复~~ 
