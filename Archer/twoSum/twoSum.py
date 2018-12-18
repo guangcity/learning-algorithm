@@ -50,13 +50,6 @@ def twoSum(nums, target):
     for i in range(0, k):
         temp = target - nums[i]
         if temp in map_a :
-            print map_a.items()
             return [map_a[temp], i]
         map_a[nums[i]] =  i
     '''
-
-a = [3, 3, 4, 5]
-
-b = twoSum(a,8)
-
-print b
