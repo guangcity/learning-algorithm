@@ -29,8 +29,8 @@
 | woyaoyangguang | [直通点](https://github.com/guangcity/learning-algorithm/tree/master/woyaoyangguang) |
 | 马晶敏         | [直通点](https://github.com/guangcity/learning-algorithm/tree/master/马晶敏) |
 | 刘广月         | [直通车](https://github.com/guangcity/learning-algorithm/tree/master/刘广月) |
-|                |                                                              |
-|                |                                                              |
+| miss-ann       | [直通车](https://github.com/guangcity/learning-algorithm/tree/master/miss-ann) |
+| 雪域小狼       | [直通车](https://github.com/guangcity/learning-algorithm/tree/master/雪域小狼) |
 |                |                                                              |
 |                |                                                              |
 |                |                                                              |
